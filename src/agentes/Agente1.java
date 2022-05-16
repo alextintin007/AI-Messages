@@ -21,7 +21,7 @@ public class Agente1 extends Agent {
     }
 
     class Comportamiento extends Behaviour {
-        boolean terminado = true;
+        boolean terminado = false;
         @Override
         public void action(){
             //todo lo que necesite hacer el agente
@@ -31,7 +31,7 @@ public class Agente1 extends Agent {
             //doDelete(); //matar el agente
             //antes hacer algo entonces usar un comportamiento del agente
 
-            Mensajes.enviar(ACLMessage.INFORM, "BuscarDatos",  "40", "COD102", getAgent());
+            Mensajes.enviar(ACLMessage.INFORM, "BuscarDatos",  "40", "COD0102", getAgent());
             ACLMessage acl = blockingReceive();
             System.out.println(acl.getContent());
         }
