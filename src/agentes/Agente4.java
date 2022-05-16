@@ -31,7 +31,7 @@ public class Agente4 extends Agent {
             //antes hacer algo entonces usar un comportamiento del agente
             //2 AL 3
             //humedad alto o bajo
-            Mensajes.enviar(ACLMessage.INFORM, "BuscarDatos",  "PH-ALTO", "COD0402", getAgent());
+            Mensajes.enviar(ACLMessage.INFORM, "BuscarDatos",  "Recibido", "COD0402", getAgent());
             ACLMessage acl = blockingReceive();
             System.out.println(acl.getContent());
         }
