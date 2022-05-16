@@ -17,6 +17,7 @@ public class Agente2 extends Agent {
         public void action(){
             //todo lo que necesite hacer el agente
             //ANN, AG, Bayes, if else
+            System.out.print("Nombre Agente 2: ");
             System.out.println(getName());
             ACLMessage msj = blockingReceive(); //this is blocking it till it recieves a message
 
@@ -51,7 +52,8 @@ public class Agente2 extends Agent {
             }
 
             if(recEnv==2){
-                Mensajes.enviar(ACLMessage.INFORM, "Ag4", "REVISAR", "COD0204", getAgent());
+                Mensajes.enviar(ACLMessage.INFORM, "Ag4", "REVISAR PH", "COD0204", getAgent());
+                recEnv=0;
             }
             //System.out.println(msj);
             //System.out.println(msj.getContent());

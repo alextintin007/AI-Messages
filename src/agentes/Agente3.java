@@ -25,6 +25,7 @@ public class Agente3 extends Agent {
         public void action(){
             //todo lo que necesite hacer el agente
             //ANN, AG, Bayes, if else
+            System.out.print("Nombre Agente 3: ");
             System.out.println(getName());
             //terminado = true; //depende de lo que se necesite
             //doDelete(); //matar el agente

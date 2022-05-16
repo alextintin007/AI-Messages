@@ -26,11 +26,11 @@ public class Agente1 extends Agent {
         public void action(){
             //todo lo que necesite hacer el agente
             //ANN, AG, Bayes, if else
+            System.out.print("Nombre Agente 1: ");
             System.out.println(getName());
             //terminado = true; //depende de lo que se necesite
             //doDelete(); //matar el agente
             //antes hacer algo entonces usar un comportamiento del agente
-
             Mensajes.enviar(ACLMessage.INFORM, "BuscarDatos",  "40", "COD0102", getAgent());
             ACLMessage acl = blockingReceive();
             System.out.println(acl.getContent());
