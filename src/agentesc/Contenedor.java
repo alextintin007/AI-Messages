@@ -19,7 +19,9 @@ public class Contenedor {
     public void agregarAgentes(){
         try {
             agentContainer.createNewAgent("ReceptorInfo", Agente1.class.getName(), new Object[]{this,1}).start();
+            agentContainer.createNewAgent("Ag3", Agente3.class.getName(), null).start();
             agentContainer.createNewAgent("BuscarDatos", Agente2.class.getName(), null).start();
+
         } catch (StaleProxyException e) {
             Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, e);
         }
