@@ -15,7 +15,8 @@ public class Mensajes {
         acl.addReceiver(aid);                               //agente que va a recibir
         acl.setSender(emisor.getAID());                     //el que envia
         acl.setLanguage(FIPANames.ContentLanguage.FIPA_SL);
-        acl.setContent(contenidoMSJ);
+        //acl.setContent(contenidoMSJ);
+        //acl.setContentObject(object);
         acl.setConversationId(codigoConversacionID);        //canal donde conversan los agentes
         emisor.send(acl);                                   //agente que va a enviar
     }

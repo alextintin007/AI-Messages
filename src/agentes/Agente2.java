@@ -11,6 +11,11 @@ public class Agente2 extends Agent {
         addBehaviour(new Comportamiento());
     }
     class Comportamiento extends CyclicBehaviour {
+
+        public class Example {
+            public static int a;
+            public static int b;
+        }
         @Override
         public void action(){
             //todo lo que necesite hacer el agente
@@ -20,12 +25,17 @@ public class Agente2 extends Agent {
 
             String idC = msj.getConversationId();
 
+
+
+
+
             if(idC.equalsIgnoreCase("COD0102")) {
                 String temperatura = msj.getContent();
                 if (Integer.parseInt(temperatura) > 35) {
                     System.out.println("Prendiendo ventiladores");
                     //...........
                     Mensajes.enviar(ACLMessage.INFORM, "ReceptorInfo", "Ventilador prendido", "COD0201", getAgent());
+                    Example.a=1;
                 }
             }
             else {
@@ -37,10 +47,22 @@ public class Agente2 extends Agent {
                     else{
                         System.out.println("Regar");
                     }
+                    Example.b=1;
                     Mensajes.enviar(ACLMessage.INFORM, "Ag3", "Estado de riesgo", "COD0203", getAgent());
                 }
-
             }
+            System.out.println(Example.a);
+            System.out.println(Example.b);
+
+            if(idC.equalsIgnoreCase("COD0402")) {
+                if((Example.a>0)&&(Example.b>0)) {
+                    System.out.println("Comunicacion con 4");
+                    Mensajes.enviar(ACLMessage.INFORM, "Ag4", "REVISAR", "COD0204", getAgent());
+
+                }
+            }
+
+            //}
             //System.out.println(msj);
             //System.out.println(msj.getContent());
             //System.out.println(msj.getConversationId());
