@@ -31,7 +31,7 @@ public class Agente3 extends Agent {
             //doDelete(); //matar el agente
             //antes hacer algo entonces usar un comportamiento del agente
             //2 AL 3
-            //humedad alto o bajo
+            //humedad alto o baja
             Mensajes.enviar(ACLMessage.INFORM, "BuscarDatos",  "baja", "COD0302", getAgent());
             ACLMessage acl = blockingReceive();
             System.out.println(acl.getContent());

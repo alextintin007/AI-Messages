@@ -1,9 +1,14 @@
 package agentes;
 
+import contenidoSerializado.Sensores;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
+import jade.lang.acl.UnreadableException;
 import jdk.jshell.MethodSnippet;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Agente2 extends Agent {
     @Override
@@ -24,14 +29,21 @@ public class Agente2 extends Agent {
             String idC = msj.getConversationId();
 
             if(idC.equalsIgnoreCase("COD0102")) {
-                String temperatura = msj.getContent();
+                try{
+                    System.out.println(msj);
+                    Sensores s = (Sensores) msj.getContentObject();
+                    System.out.println(s.getRiego()+" "+s.getTemperatura());
+                }catch (UnreadableException ex){
+                    Logger.getLogger(Agente2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                /*String temperatura = msj.getContent();
                 if (Integer.parseInt(temperatura) > 35) {
                     System.out.println("Prendiendo ventiladores");
                     //...........
                     Mensajes.enviar(ACLMessage.INFORM, "ReceptorInfo", "Ventilador prendido", "COD0201", getAgent());
                     recEnv=1;
                     cont[0]=temperatura;
-                }
+                }*/
             }
             else {
                 if(idC.equalsIgnoreCase("COD0302")) {
@@ -42,11 +54,11 @@ public class Agente2 extends Agent {
                     else{
                         System.out.println("Regar");
                     }
+
                     if(recEnv==1){
                         recEnv=2;
+                        cont[1]=humedadHoja;
                     }
-
-                    cont[1]=humedadHoja;
                     Mensajes.enviar(ACLMessage.INFORM, "Ag3", "Estado de riesgo", "COD0203", getAgent());
                 }
             }
@@ -58,7 +70,6 @@ public class Agente2 extends Agent {
             //System.out.println(msj);
             //System.out.println(msj.getContent());
             //System.out.println(msj.getConversationId());
-
         }
     }
 

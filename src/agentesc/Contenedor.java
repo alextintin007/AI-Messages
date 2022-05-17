@@ -22,8 +22,6 @@ public class Contenedor {
             agentContainer.createNewAgent("Ag3", Agente3.class.getName(), null).start();
             agentContainer.createNewAgent("Ag4", Agente4.class.getName(), null).start();
             agentContainer.createNewAgent("BuscarDatos", Agente2.class.getName(), null).start();
-
-
         } catch (StaleProxyException e) {
             Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, e);
         }

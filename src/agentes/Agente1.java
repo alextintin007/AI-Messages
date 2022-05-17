@@ -12,7 +12,7 @@ public class Agente1 extends Agent {
         addBehaviour(new Comportamiento());
     }
     @Override
-    protected void takeDown(){
+    protected void takeDown(){          //last wishes
         Contenedor c = (Contenedor)getArguments()[0];
         int i = Integer.parseInt(getArguments()[1].toString());
         i++;
@@ -33,6 +33,7 @@ public class Agente1 extends Agent {
             //antes hacer algo entonces usar un comportamiento del agente
             Mensajes.enviar(ACLMessage.INFORM, "BuscarDatos",  "40", "COD0102", getAgent());
             ACLMessage acl = blockingReceive();
+            System.out.print("Contenido del Agente 1: ");
             System.out.println(acl.getContent());
         }
         @Override
